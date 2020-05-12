@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <title>javascript: calculate two numbers</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script>
+
+            function calc()
+            {
+               
+                var n1 = new Float32Array(6);
+                var n2 = new Float32Array(6);
+                var str = document.getElementById('n1').value;
+                var res = str.split(" ");
+                 n1[1] =parseFloat(res[0]);
+                 n2[1] =parseFloat(res[1]);
+                str = document.getElementById('n2').value;
+                res = str.split(" ");
+                 n1[2] =parseFloat(res[0]);
+                 n2[2] =parseFloat(res[1]);
+                str = document.getElementById('n3').value;
+                res = str.split(" ");
+                 n1[3] =parseFloat(res[0]);
+                 n2[3] =parseFloat(res[1]);
+                str = document.getElementById('n4').value;
+                res = str.split(" ");
+                 n1[4] =parseFloat(res[0]);
+                 n2[4]=parseFloat(res[1]);
+                str = document.getElementById('n5').value;
+                res = str.split(" ");
+                 n1[5] =parseFloat(res[0]);
+                 n2[5] =parseFloat(res[1]);
+                var l=n1[1]+n1[2]+n1[3]+n1[4]+n1[5];
+                var s=n2[1]+n2[2]+n2[3]+n2[4]+n2[5];
+                var rates = document.getElementsByName("blankRadio");
+                var rate;
+                for(var i = 0; i < rates.length; i++)
+                {
+                   if(rates[i].checked){
+                        rate = rates[i].value;
+                      }
+                }
+                var win=parseFloat(rate);
+                for(var i=1;i<6;++i)
+                {
+                    if(i===win)
+                    {
+                        document.getElementById("s"+i).innerHTML=parseFloat(document.getElementById("s"+i).innerHTML)+5*n2[i]-s+l;
+                    }
+                    else
+                    {
+                        document.getElementById("s"+i).innerHTML=parseFloat(document.getElementById("s"+i).innerHTML)+5*n2[i]-s-n1[i];
+                    }
+
+                }
+
+
+
+
+
+            }
+
+
+        </script>
+	<style>
+			
+				.but{
+					margin-left: 20%;
+				}
+			
+					body  
+				  {
+						color:yellow;
+						font-weight:bold;
+						margin-left:4%;
+						margin-top:12.5%;
+						background-image: url("https://www.itl.cat/pngfile/big/41-416822_playing-cards-wallpaper.jpg");
+						background-color: black;
+						background-size:     cover;                     
+						background-repeat:   no-repeat;
+						background-position: center center;              
+		}
+		#demo
+		{
+			color:white;
+		}
+
+        </style>
+    </head>
+    <body>
+        <div class="form-check">
+        <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="1" aria-label="...">
+        <label for="p1" >Player 1:</label>
+        <label for="s1" id="s1">0</label>
+        <input type="text" id="n1" placeholder="Point  <space>  Maal"  /><br/><br/>
+        </div>
+
+        <div class="form-check">
+         <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="2" aria-label="...">
+         <label for="p2">Player 2:</label>
+         <label for="s2" id="s2">0</label>
+         <input type="text" id="n2" placeholder="Point  <space>  Maal" /><br/><br/>
+        </div>
+
+        <div class="form-check">
+        <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="3" aria-label="...">
+        <label for="p3">Player 3:</label>
+        <label for="s3" id="s3">0</label>
+        <input type="text" id="n3"placeholder="Point  <space>  Maal" /><br/><br/>
+        </div>
+
+        <div class="form-check">
+        <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="4" aria-label="...">
+        <label for="p4">Player 4:</label>
+        <label for="s4" id="s4">0</label>
+        <input type="text" id="n4" placeholder="Point  <space>  Maal" /><br/><br/>
+        </div>
+
+        <div class="form-check">
+        <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="5" aria-label="...">
+        <label for="p1">Player 5:</label>
+        <label for="s5" id="s5">0</label>
+        <input type="text" id="n5"placeholder="Point  <space>  Maal" /><br/><br/>
+        </div>
+        <div class="but">
+        		<button onclick="calc()"  class="btn btn-primary"> Submit</button>
+
+        </div>
+        <br/>
+        <p id="demo">Made by:Varun Sahu         <br/>                Email:varunsahu29.vs@gmail.com</p>
+
+    </body>
+</html>
