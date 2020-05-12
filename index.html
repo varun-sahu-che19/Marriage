@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+        <title>javascript: calculate two numbers</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script>
+
+            function calc()
+            {
+               
+                var n1 = new Float32Array(4);
+                var n2 = new Float32Array(4);
+                var str = document.getElementById('n1').value;
+                var res = str.split(" ");
+                 n1[1] =parseFloat(res[0]);
+                 n2[1] =parseFloat(res[1]);
+                str = document.getElementById('n2').value;
+                res = str.split(" ");
+                 n1[2] =parseFloat(res[0]);
+                 n2[2] =parseFloat(res[1]);
+                str = document.getElementById('n3').value;
+                res = str.split(" ");
+                 n1[3] =parseFloat(res[0]);
+                 n2[3] =parseFloat(res[1]);
+                var l=n1[1]+n1[2]+n1[3];
+                var s=n2[1]+n2[2]+n2[3];
+                var rates = document.getElementsByName("blankRadio");
+                var rate;
+                for(var i = 0; i < rates.length; i++)
+                {
+                   if(rates[i].checked){
+                        rate = rates[i].value;
+                      }
+                }
+                var win=parseFloat(rate);
+                for(var i=1;i<4;++i)
+                {
+                    if(i===win)
+                    {
+                        document.getElementById("s"+i).innerHTML=parseFloat(document.getElementById("s"+i).innerHTML)+3*n2[i]-s+l;
+                    }
+                    else
+                    {
+                        document.getElementById("s"+i).innerHTML=parseFloat(document.getElementById("s"+i).innerHTML)+3*n2[i]-s-n1[i];
+                    }
+
+                }
+
+
+
+
+
+            }
+
+
+        </script>
+        <style>
+			
+				.but{
+					margin-left: 20%;
+				}
+			
+					body  
+				  {
+						color:yellow;
+						font-weight:bold;
+						margin-left:4%;
+						margin-top:12.5%;
+						background-image: url("https://www.itl.cat/pngfile/big/41-416822_playing-cards-wallpaper.jpg");
+						background-color: black;
+						background-size:     cover;                     
+						background-repeat:   no-repeat;
+						background-position: center center;              
+		}
+		#demo
+		{
+			color:white;
+		}
+		a
+		{
+			font-size:200%;
+		}
+		h1
+		{
+			font-sze:300%;
+		}
+        </style>
+
+    </head>
+    <body>
+		
+        <h1>Select numbers of player</h1>
+        <a href="3 PLAYER.html" >3 Player</a><br/> <br/> 
+        <a href="4 PLAYER.html" >4 Player</a><br/> <br/> 
+        <a href="5 PLAYER.html" >5 Player</a><br/> <br/> 
+        <p id="demo">Made by:Varun Sahu         <br/>                Email:varunsahu29.vs@gmail.com</p>
+
+    </body>
+</html>
