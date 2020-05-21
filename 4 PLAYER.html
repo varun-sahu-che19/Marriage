@@ -11,25 +11,25 @@
 
             function calc()
             {
-               
                 var n1 = new Float32Array(5);
                 var n2 = new Float32Array(5);
                 var str = document.getElementById('n1').value;
-                var res = str.split(" ");
+                var res = str.split("-");
                  n1[1] =parseFloat(res[0]);
                  n2[1] =parseFloat(res[1]);
                 str = document.getElementById('n2').value;
-                res = str.split(" ");
+                 res = str.split("-");
                  n1[2] =parseFloat(res[0]);
                  n2[2] =parseFloat(res[1]);
                 str = document.getElementById('n3').value;
-                res = str.split(" ");
+                res = str.split("-");
                  n1[3] =parseFloat(res[0]);
                  n2[3] =parseFloat(res[1]);
                 str = document.getElementById('n4').value;
-                res = str.split(" ");
+                res = str.split("-");
                  n1[4] =parseFloat(res[0]);
                  n2[4]=parseFloat(res[1]);
+          
                 var l=n1[1]+n1[2]+n1[3]+n1[4];
                 var s=n2[1]+n2[2]+n2[3]+n2[4];
                 var rates = document.getElementsByName("blankRadio");
@@ -41,20 +41,36 @@
                       }
                 }
                 var win=parseFloat(rate);
+                var score = new Float32Array(5);
                 for(var i=1;i<5;++i)
                 {
                     if(i===win)
                     {
                         document.getElementById("s"+i).innerHTML=parseFloat(document.getElementById("s"+i).innerHTML)+4*n2[i]-s+l;
+                        score[i]=4*n2[i]-s+l;
                     }
                     else
                     {
                         document.getElementById("s"+i).innerHTML=parseFloat(document.getElementById("s"+i).innerHTML)+4*n2[i]-s-n1[i];
+                        score[i]=4*n2[i]-s-n1[i];
                     }
 
                 }
-
-
+                for(var i=1;i<5;++i)
+                {
+                    document.getElementById("col"+i).innerHTML+="</br>"+score[i];
+                    
+                }
+                for(var i=1;i<5;++i)
+                {
+                    if(document.getElementById("pp"+i).value)
+                    document.getElementById("p"+i).innerHTML=document.getElementById("pp"+i).value+":";
+                    else
+                    document.getElementById("p"+i).innerHTML="Player"+i+":";
+                    
+                }
+               
+				
 
 
 
@@ -62,66 +78,117 @@
 
 
         </script>
-        <style>
-			
+	<style>
+			input
+            {
+                text-align: center;
+            }
 				.but{
-					margin-left: 20%;
+					text-align:center;
 				}
 			
 					body  
 				  {
-						color:yellow;
+						color:rgb(255, 251, 4);
 						font-weight:bold;
 						margin-left:4%;
+                        margin-right:4%;
 						margin-top:12.5%;
-						background-image: url('background.jpg');
+						background-image:url('background.jpg');
 						background-color: black;
-						background-size:     cover;                     
-						background-repeat:   no-repeat;
+						background-size:   100% ;                     
+						
 						background-position: center center;              
-		}
+		        }
 		#demo
 		{
-			color:white;
+			color:White;
+            font-weight:bold;
+            font-size: 1.25em;
+            -webkit-text-stroke-width: 0.5px; 
+            -webkit-text-stroke-color: red; 
+           
 		}
-        </style>
+        
+	
+        .column {
+            float: left;
+            width: 25%;
+            text-align: center;
+            color:whitesmoke;
+            font-weight:bold;
+            
+            
+           
+        }
+        #col1,#col2,#col3,#col4
+        {
+            color:whitesmoke;
+            -webkit-text-stroke-width: 0.5px; 
+            -webkit-text-stroke-color: blue; 
 
+        }
+		
+
+        </style>
     </head>
     <body>
-		
         <div class="form-check">
         <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="1" aria-label="...">
-        <label for="p1" >Player 1:</label>
+        <label id="p1" >Player 1:</label>
         <label for="s1" id="s1">0</label>
-        <input type="text" id="n1" placeholder="Point  <space>  Maal" /><br/><br/>
+        <input type="tel" id="n1" placeholder="Point-Maal"   /><br/><br/>
         </div>
 
         <div class="form-check">
          <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="2" aria-label="...">
-         <label for="p2">Player 2:</label>
+         <label id="p2">Player 2:</label>
          <label for="s2" id="s2">0</label>
-         <input type="text" id="n2" placeholder="Point  <space>  Maal" /><br/><br/>
+         <input type="tel" id="n2" placeholder="Point-Maal"  /><br/><br/>
         </div>
 
         <div class="form-check">
         <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="3" aria-label="...">
-        <label for="p3">Player 3:</label>
+        <label id="p3">Player 3:</label>
         <label for="s3" id="s3">0</label>
-        <input type="text" id="n3" placeholder="Point  <space>  Maal" /><br/><br/>
+        <input type="tel" id="n3"placeholder="Point-Maal" /><br/><br/>
         </div>
 
         <div class="form-check">
         <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="4" aria-label="...">
-        <label for="p4">Player 4:</label>
+        <label id="p4">Player 4:</label>
         <label for="s4" id="s4">0</label>
-        <input type="text" id="n4" placeholder="Point  <space>  Maal" /><br/><br/>
+        <input type="tel" id="n4" placeholder="Point-Maal" /><br/><br/>
         </div>
-        <div class="but">
-        		<button onclick="calc()"  class="btn btn-primary"> Submit</button>
 
+        
+        <div class="but">
+            <button onclick="calc()"  class="btn btn-primary"> Submit</button>
+         </div>
+        </br>
+        <div class="column" >
+            <input type="text" placeholder="Player1" size="7" id="pp1"/>
+            <p id="col1">Player1</p>
         </div>
-        <br/>
-        <p id="demo">Made by:Varun Sahu         <br/>                Email:varunsahu29.vs@gmail.com</p>
+        <div class="column" >
+            <input type="text" placeholder="Player2" size="7" id="pp2"/>
+            <p id="col2"> Player2     </p>
+        </div>
+        <div class="column" >
+            <input type="text" placeholder="Player3" size="7" id="pp3"/>
+            <p id="col3"> Player3     </p>
+        </div>
+        <div class="column" >
+            <input type="text" placeholder="Player4" size="7" id="pp4"/>
+            <p id="col4"> Player4 </p>
+        </div>
+        
+       
+        		
+		  <p id="demo">Made by:Varun Sahu         <br/>                Email:varunsahu29.vs@gmail.com</p>
+        
+
 
     </body>
+    
 </html>
