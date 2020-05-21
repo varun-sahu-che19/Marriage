@@ -3,7 +3,7 @@
 <html>
     <head>
 
-        <title>5 PLAYER</title>
+        <title>javascript: calculate two numbers</title>
         <meta charset="windows-1252">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -11,32 +11,32 @@
 
             function calc()
             {
-               
                 var n1 = new Float32Array(6);
                 var n2 = new Float32Array(6);
                 var str = document.getElementById('n1').value;
-                var res = str.split(" ");
+                var res = str.split("-");
                  n1[1] =parseFloat(res[0]);
                  n2[1] =parseFloat(res[1]);
                 str = document.getElementById('n2').value;
-                res = str.split(" ");
+                 res = str.split("-");
                  n1[2] =parseFloat(res[0]);
                  n2[2] =parseFloat(res[1]);
                 str = document.getElementById('n3').value;
-                res = str.split(" ");
+                res = str.split("-");
                  n1[3] =parseFloat(res[0]);
                  n2[3] =parseFloat(res[1]);
                 str = document.getElementById('n4').value;
-                res = str.split(" ");
+                res = str.split("-");
                  n1[4] =parseFloat(res[0]);
                  n2[4]=parseFloat(res[1]);
                 str = document.getElementById('n5').value;
-                res = str.split(" ");
+                res = str.split("-");
                  n1[5] =parseFloat(res[0]);
                  n2[5] =parseFloat(res[1]);
                 var l=n1[1]+n1[2]+n1[3]+n1[4]+n1[5];
                 var s=n2[1]+n2[2]+n2[3]+n2[4]+n2[5];
                 var rates = document.getElementsByName("blankRadio");
+                console.log(rates);
                 var rate;
                 for(var i = 0; i < rates.length; i++)
                 {
@@ -45,20 +45,36 @@
                       }
                 }
                 var win=parseFloat(rate);
+                var score = new Float32Array(6);
                 for(var i=1;i<6;++i)
                 {
                     if(i===win)
                     {
                         document.getElementById("s"+i).innerHTML=parseFloat(document.getElementById("s"+i).innerHTML)+5*n2[i]-s+l;
+                        score[i]=5*n2[i]-s+l;
                     }
                     else
                     {
                         document.getElementById("s"+i).innerHTML=parseFloat(document.getElementById("s"+i).innerHTML)+5*n2[i]-s-n1[i];
+                        score[i]=5*n2[i]-s-n1[i];
                     }
 
                 }
-
-
+                for(var i=1;i<6;++i)
+                {
+                    document.getElementById("col"+i).innerHTML+="</br>"+score[i];
+                    
+                }
+                for(var i=1;i<6;++i)
+                {
+                    if(document.getElementById("pp"+i).value)
+                    document.getElementById("p"+i).innerHTML=document.getElementById("pp"+i).value+":";
+                    else
+                    document.getElementById("p"+i).innerHTML="Player"+i+":";
+                    
+                }
+               
+				
 
 
 
@@ -67,71 +83,124 @@
 
         </script>
 	<style>
-			
+			input
+            {
+                text-align: center;
+            }
 				.but{
-					margin-left: 20%;
+					text-align:center;
 				}
 			
 					body  
 				  {
-						color:yellow;
+						color:rgb(255, 251, 4);
 						font-weight:bold;
 						margin-left:4%;
+                        margin-right:4%;
 						margin-top:12.5%;
 						background-image:url('background.jpg');
 						background-color: black;
-						background-size:     cover;                     
-						background-repeat:   no-repeat;
+						background-size:   100% ;                     
+						
 						background-position: center center;              
-		}
+		        }
 		#demo
 		{
-			color:white;
+			color:White;
+            font-weight:bold;
+            font-size: 1.25em;
+            -webkit-text-stroke-width: 0.5px; 
+            -webkit-text-stroke-color: red; 
+           
 		}
+        
+	
+        .column {
+            float: left;
+            width: 20%;
+            text-align: center;
+            color:whitesmoke;
+            font-weight:bold;
+            
+            
+           
+        }
+        #col1,#col2,#col3,#col4,#col5
+        {
+            color:whitesmoke;
+            -webkit-text-stroke-width: 0.5px; 
+            -webkit-text-stroke-color: blue; 
+
+        }
+		
 
         </style>
     </head>
     <body>
         <div class="form-check">
         <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="1" aria-label="...">
-        <label for="p1" >Player 1:</label>
+        <label id="p1" >Player 1:</label>
         <label for="s1" id="s1">0</label>
-        <input type="text" id="n1" placeholder="Point  <space>  Maal"  /><br/><br/>
+        <input type="tel" id="n1" placeholder="Point-Maal"   /><br/><br/>
         </div>
 
         <div class="form-check">
          <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="2" aria-label="...">
-         <label for="p2">Player 2:</label>
+         <label id="p2">Player 2:</label>
          <label for="s2" id="s2">0</label>
-         <input type="text" id="n2" placeholder="Point  <space>  Maal" /><br/><br/>
+         <input type="tel" id="n2" placeholder="Point-Maal"  /><br/><br/>
         </div>
 
         <div class="form-check">
         <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="3" aria-label="...">
-        <label for="p3">Player 3:</label>
+        <label id="p3">Player 3:</label>
         <label for="s3" id="s3">0</label>
-        <input type="text" id="n3"placeholder="Point  <space>  Maal" /><br/><br/>
+        <input type="tel" id="n3"placeholder="Point-Maal" /><br/><br/>
         </div>
 
         <div class="form-check">
         <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="4" aria-label="...">
-        <label for="p4">Player 4:</label>
+        <label id="p4">Player 4:</label>
         <label for="s4" id="s4">0</label>
-        <input type="text" id="n4" placeholder="Point  <space>  Maal" /><br/><br/>
+        <input type="tel" id="n4" placeholder="Point-Maal" /><br/><br/>
         </div>
 
         <div class="form-check">
         <input class="form-check-input position-static" type="radio" name="blankRadio" id="blankRadio1" value="5" aria-label="...">
-        <label for="p1">Player 5:</label>
+        <label id="p5">Player 5:</label>
         <label for="s5" id="s5">0</label>
-        <input type="text" id="n5"placeholder="Point  <space>  Maal" /><br/><br/>
+        <input type="tel" id="n5"placeholder="Point-Maal"/><br/><br/>
         </div>
         <div class="but">
-        		<button onclick="calc()"  class="btn btn-primary"> Submit</button>
-
+            <button onclick="calc()"  class="btn btn-primary"> Submit</button>
+         </div>
+        </br>
+        <div class="column" >
+            <input type="text" placeholder="Player1" size="5" id="pp1"/>
+            <p id="col1">Player1</p>
         </div>
-        <br/>
-        <p id="demo">Made by:Varun Sahu         <br/>                Email:varunsahu29.vs@gmail.com</p>
+        <div class="column" >
+            <input type="text" placeholder="Player2" size="5" id="pp2"/>
+            <p id="col2"> Player2     </p>
+        </div>
+        <div class="column" >
+            <input type="text" placeholder="Player3" size="5" id="pp3"/>
+            <p id="col3"> Player3     </p>
+        </div>
+        <div class="column" >
+            <input type="text" placeholder="Player4" size="5" id="pp4"/>
+            <p id="col4"> Player4 </p>
+        </div>
+        <div class="column" >
+            <input type="text" placeholder="Player5" size="5" id="pp5"/>
+            <p id="col5"> Player5     </p>
+        </div>
+       
+        		
+		  <p id="demo">Made by:Varun Sahu         <br/>                Email:varunsahu29.vs@gmail.com</p>
+        
+
 
     </body>
+    
 </html>
